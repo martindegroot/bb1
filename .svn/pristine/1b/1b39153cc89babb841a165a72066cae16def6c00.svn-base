@@ -1,0 +1,20 @@
+<?php
+/* @var $this SiteController */
+/* deze view file toont de output van de controller/action combinatie site/index */
+$this->pageTitle=Yii::app()->name;
+
+     $mb = new MenuBuilder();
+     $menuItems
+    // build the array of menuItems which are to be added to the standard menu, 
+    // specific for this page's menu.
+    
+    echo $mb->buildMenu($menuItems);
+?>
+
+<h1>Welkom op de <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<?php if(!Yii::app()->user->isGuest):?>
+<p>
+   Uw vorige aanmelding was op <?php echo Yii::app()->user->lastLogin; ?>.  
+</p>
+<?php endif;?>
+<p>Deze startpagina is nog voorlopig, hier wordt nog aan gewerkt.</p>

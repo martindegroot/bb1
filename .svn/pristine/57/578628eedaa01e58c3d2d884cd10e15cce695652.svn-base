@@ -1,0 +1,18 @@
+<?php
+/* @var $this PersoonController */
+/* @var $model Persoon */
+
+$this->breadcrumbs=array(
+	'Personen'=>array('index'),
+	'Invoeren persoonsgegevens',
+);
+
+$this->menu=array(
+	array('label'=>'Lijst van personen', 'url'=>array('index')),
+	array('label'=>'Beheren personen', 'url'=>array('admin')),
+);
+?>
+
+<h1>Invoeren van persoonsgegevens</h1>
+
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -1,0 +1,127 @@
+<?php
+/* @var $this PersoonController */
+/* @var $model Persoon */
+/* @var $form CActiveForm */
+
+
+if ($partner =='partner')
+{
+    $partnerfieldsreadonly = true;
+}
+else
+{
+    $partnerfieldsreadonly = false;
+}
+
+
+?>
+
+
+<div class="form">
+
+<?php
+ $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'persoon-form',
+	'enableAjaxValidation'=>false,
+)); ?>
+
+	<p class="note">Gegevens met een <span class="required">*</span> moeten ingevuld worden.</p>
+
+	<?php echo $form->errorSummary($model); ?>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'achternaam'); ?>
+		<?php echo $form->textField($model,'achternaam',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'achternaam'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'voorvoegsel'); ?>
+		<?php echo $form->textField($model,'voorvoegsel',array('size'=>15,'maxlength'=>15)); ?>
+		<?php echo $form->error($model,'voorvoegsel'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'voorletters'); ?>
+		<?php echo $form->textField($model,'voorletters',array('size'=>15,'maxlength'=>15)); ?>
+		<?php echo $form->error($model,'voorletters'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'naamgebruik'); ?>
+		<?php echo $form->textField($model,'naamgebruik',array('size'=>2,'maxlength'=>2)); ?>
+		<?php echo $form->error($model,'naamgebruik'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'bsn'); ?>
+		<?php echo $form->textField($model,'bsn'); ?>
+		<?php echo $form->error($model,'bsn'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'geboortedatum'); ?>
+        <!-- voorbeeld overgenomen van Yii Rapid Application Development Hotshot -->
+        <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'name' => 'geboortedatum',
+                'attribute' => 'geboortedatum',
+                'model'=>$model,
+                'options'=> array(
+                  'dateFormat' =>'yy-mm-dd',
+                  'altFormat' =>'yy-mm-dd',
+                  'changeMonth' => true,
+                  'changeYear' => true,
+                  'yearRange' => "-100:+00",
+                  'appendText' => 'jjjj-mm-dd',
+                  'monthNamesShort' => array( "Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec" ),
+                  'dayNamesMin'   => array("Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"),
+                  'dayNamesShort'  => array("Zon", "Maa", "Din", "Woe", "Don", "Vrij", "Zat"),
+                ),
+              )); 
+        ?>  
+		<?php echo $form->error($model,'geboortedatum'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'achternaam_partner'); ?>
+		<?php echo $form->textField($model,'achternaam_partner',array('size'=>45,
+                                                                      'maxlength'=>45,
+                                                                      'readonly' => $partnerfieldsreadonly)); ?>
+		<?php echo $form->error($model,'achternaam_partner'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'voorvoegsel_partner'); ?>
+		<?php echo $form->textField($model,'voorvoegsel_partner',array('size'=>15,
+                                                                      'maxlength'=>15,
+                                                                      'readonly' => $partnerfieldsreadonly)); ?>
+		<?php echo $form->error($model,'voorvoegsel_partner'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'titel'); ?>
+         <?php echo $form->dropDownList($model,'titel', $model->getTitelOptions()); ?>
+		<?php echo $form->error($model,'titel'); ?>
+	</div>
+
+    <div class="row">
+      <?php
+          if(!is_null($model->identiteitsdocument_id))
+          {
+            echo '<b>' .$model->identiteitsdocument->attributeLabels()['samenvatting'] .  ' = </b>' .
+                   $model->identiteitsdocument->samenvatting;       
+          }
+          else
+          {
+              echo '<b>Details identiteitsdocument = </b>'; 
+          }
+      ?> 
+    </div>
+
+	<div class="row buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Gegevens opslaan' : 'Wijzigingen opslaan'); ?>
+	</div>
+
+<?php $this->endWidget(); ?>
+
+</div><!-- form -->

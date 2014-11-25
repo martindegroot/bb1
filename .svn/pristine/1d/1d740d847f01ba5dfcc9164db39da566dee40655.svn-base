@@ -1,0 +1,34 @@
+<?php
+/* @var $this IdentiteitsdocumentController */
+/* @var $model Identiteitsdocument */
+
+$this->breadcrumbs=array(
+	'identiteitsdocumenten'=>array('index'),
+	'Bekijken identiteitsdocument (ID='. $model->id . ')',
+);
+
+$this->menu=array(
+	array('label'=>'Lijst van identiteitsdocumenten', 'url'=>array('index')),
+	array('label'=>'Invoeren identiteitsdocument', 'url'=>array('create')),
+	array('label'=>'Wijzigen identiteitsdocument', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Verwijderen identiteitsdocument', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Weet u zeker dat u dit identiteitsdocument wilt verwijderen?')),
+	array('label'=>'Beheren identiteitsdocumenten', 'url'=>array('admin')),
+    array('label' => 'Terug', 'url'=> Yii::app()->user->getReturnUrl()),
+);
+?>
+
+<h1>Bekijken van identiteitsdocument met ID = <?php echo $model->id; ?></h1>
+
+<?php $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'id',
+		'soort_document',
+		'nummer',
+		'geldigtot_datum',
+		'create_time',
+		'create_user_id',
+		'update_time',
+		'update_user_id',
+	),
+)); ?>

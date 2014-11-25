@@ -1,0 +1,71 @@
+<?php
+/* @var $this PersoonController */
+/* @var $data Persoon */
+?>
+
+<div class="view">
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('achternaam')); ?>:</b>
+	<?php echo CHtml::encode($data->achternaam); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('voorvoegsel')); ?>:</b>
+	<?php echo CHtml::encode($data->voorvoegsel); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('voorletters')); ?>:</b>
+	<?php echo CHtml::encode($data->voorletters); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('naamgebruik')); ?>:</b>
+	<?php echo CHtml::encode($data->naamgebruik); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('bsn')); ?>:</b>
+	<?php echo CHtml::encode($data->bsn); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('geboortedatum')); ?>:</b>
+	<?php echo CHtml::encode($data->geboortedatum); ?>
+	<br />
+
+	<?php /*
+	<b><?php echo CHtml::encode($data->getAttributeLabel('achternaam_partner')); ?>:</b>
+	<?php echo CHtml::encode($data->achternaam_partner); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('voorvoegsel_partner')); ?>:</b>
+	<?php echo CHtml::encode($data->voorvoegsel_partner); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('titel')); ?>:</b>
+	<?php echo CHtml::encode($data->titel); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('identiteitsdocument_id')); ?>:</b>
+	<?php echo CHtml::encode($data->identiteitsdocument_id); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
+	<?php echo CHtml::encode($data->create_time); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('create_user_id')); ?>:</b>
+	<?php echo CHtml::encode($data->create_user_id); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('update_time')); ?>:</b>
+	<?php echo CHtml::encode($data->update_time); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('update_user_id')); ?>:</b>
+	<?php echo CHtml::encode($data->update_user_id); ?>
+	<br />
+
+	*/ ?>
+
+</div>

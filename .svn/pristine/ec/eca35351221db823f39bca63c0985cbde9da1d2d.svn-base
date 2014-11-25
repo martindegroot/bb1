@@ -1,0 +1,48 @@
+<?php
+/* @var $this PersoonController */
+/* @var $model Persoon */
+
+$this->breadcrumbs=array(
+//	'Personen'=>array('index'),
+//	'Gegevens persoon met ID=' .$model->id=>array('view','id'=>$model->id),
+//	'Wijzigen',
+);
+
+$this->menu=array(
+//	array('label'=>'Lijst van personen', 'url'=>array('index')),
+//	array('label'=>'Invoeren persoonsgegevens', 'url'=>array('create')),
+//	array('label'=>'Bekijken persoonsgegevens', 'url'=>array('view', 'id'=>$model->id)),
+//	array('label'=>'Beheren persoonsgegevens', 'url'=>array('admin')),                              
+);
+if (is_null($model->identiteitsdocument_id)) 
+    $this->menu[] = array('label' => 'Invoeren identiteitsdocument',
+                                     'url' => Yii::app()->createUrl('identiteitsdocument/create',
+                                                                    array('persoon_id' => $model->id,
+                                                                          'klant_id' => $klant->id,)
+                                                                   ),
+                         );
+else
+{   $returnUrl = Yii::app()->createUrl('persoon/update',
+                                       array('id' => $model->id,
+                                             'klant_id' => $klant->id, ));
+    $encodedReturnUrl = base64_encode($returnUrl);
+     
+
+    $this->menu[] = array('label' => 'Wijzigen identiteitsdocument',
+                                     'url' => Yii::app()->createUrl('identiteitsdocument/update',
+                                                                    array( 'id' => $model->identiteitsdocument_id,
+                                                                           'persoon_id' => $model->id,
+                                                                           'klant_id' => $klant->id,
+                                                                           'encodedReturnUrl' => $encodedReturnUrl,
+                                                                         )
+                                                                   ),
+                         );    
+}                         
+?>
+
+<h3>Wijzigen persoonsgegevens <?php echo $partner; ?>van klant met klantnr = <?php echo $klant->klantnr; ?></h3>
+
+<?php
+    echo $this->renderPartial('_form', array('model'=>$model,
+                                             'partner' => $partner,));
+?>

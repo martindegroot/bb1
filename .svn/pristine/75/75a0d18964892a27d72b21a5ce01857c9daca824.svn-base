@@ -1,0 +1,18 @@
+<?php
+/* @var $this IdentiteitsdocumentController */
+/* @var $model Identiteitsdocument */
+
+$this->breadcrumbs=array(
+	'Identiteitsdocumenten'=>array('index'),
+	'Invoeren identiteitsdocument',
+);
+
+$this->menu=array(
+	array('label'=>'Lijst van identiteitsdocumenten', 'url'=>array('index')),
+	array('label'=>'Beheren identiteitsdocumenten', 'url'=>array('admin')),
+);
+?>
+
+<h1>Invoeren van een identiteitsdocument</h1>
+
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

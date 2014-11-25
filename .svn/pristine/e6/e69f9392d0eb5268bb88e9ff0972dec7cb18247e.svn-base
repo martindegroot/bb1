@@ -1,0 +1,65 @@
+<?php
+/* @var $this PersoonController */
+/* @var $model Persoon */
+
+$this->breadcrumbs=array(
+	'Personen'=>array('index'),
+	'Bekijken gegevens persoon (ID=' .$model->id . ')' ,
+);
+
+$this->menu=array(
+	array('label'=>'Lijst van personen', 'url'=>array('index')),
+	array('label'=>'Invoeren persoonsgegevens', 'url'=>array('create')),
+	array('label'=>'Wijzigen persoonsgegevens', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Verwijderen persoonsgegevens', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Weet u zeker dat u dit item wilt verwijderen?')),
+	array('label'=>'Beheren persoonsgegevens', 'url'=>array('admin')),
+);
+?>
+
+<h1>Bekijken van gegevens van persoon met ID = <?php echo $model->id; ?></h1>
+
+<?php $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+    // In het detail view tonen we wel alle velden
+	'attributes'=>array(
+		'id',
+		'achternaam',
+		'voorvoegsel',
+		'voorletters',
+		'naamgebruik',
+		'bsn',
+		'geboortedatum',
+		'achternaam_partner',
+		'voorvoegsel_partner',
+		'titel',
+	//	'identiteitsdocument_id',
+		'create_time',
+		'create_user_id',
+		'update_time',
+		'update_user_id',
+	),
+)); ?>
+<div id="identiteitsdocumenten">
+    <strong>Identiteitsdocument:</strong></br>
+    <!-- hier de view admin.php van model identiteitsdocumenten aanroepen:  -->
+    <?php
+        $dataProviderIdDoc = new CActiveDataProvider('Identiteitsdocument',
+             array(
+                    'criteria' => array(
+                                         'condition' => 'id=:idIdDoc',
+                                         'params' => array(
+                                                            ':idIdDoc' => $model->identiteitsdocument_id,
+                                                          )
+                                       )
+                  )
+        );
+        $redirectUrl = $this->createUrl('persoon/view',
+                                        array(
+                                               'id' => $model->id,
+                                               ));
+        $encodedRedirectUrl = base64_encode($redirectUrl) ;
+        $this->renderPartial('_identiteitsdocument', 
+                             array('dataProviderIdDoc' =>$dataProviderIdDoc,
+                                   'encodedRedirectUrl' => $encodedRedirectUrl));
+    ?>
+</div>

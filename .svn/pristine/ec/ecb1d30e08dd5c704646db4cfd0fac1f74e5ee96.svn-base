@@ -1,0 +1,74 @@
+<?php
+/* @var $this PersoonController */
+/* @var $model Persoon */
+
+$this->breadcrumbs=array(
+	'Personen'=>array('index'),
+	'Beheren persoonsgegevens',
+);
+
+$this->menu=array(
+	array('label'=>'Lijst van personen', 'url'=>array('index')),
+	array('label'=>'Invoeren persoonsgegevens', 'url'=>array('create')),
+);
+
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+	$('.search-form').toggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$('#persoon-grid').yiiGridView('update', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+");
+?>
+
+<h1>Beheren van persoonsgegevens</h1>
+
+<p>
+<!--You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.   
+-->
+U kunt eventueel een vergelijkingsteken (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+of <b>=</b>) toevoegen voorafgaande aan uw zoekwaarden om te  specificeren hoe de vergelijking gedaan moet worden.
+</p>
+
+<?php echo CHtml::link('Geavanceerd zoeken','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
+<?php $this->renderPartial('_search',array(
+	'model'=>$model,
+)); ?>
+</div><!-- search-form -->
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'persoon-grid',
+	'dataProvider'=>$model->search(),
+	'filter'=>$model,
+    /* Toon alleen de velden die voor identificatie belangrijk zijn*/
+	'columns'=>array(
+		'id',
+		'achternaam',
+         'titel',
+		'voorletters',
+        'voorvoegsel',
+		'naamgebruik',
+		'bsn',
+        'geboortedatum',
+		/*
+		'achternaam_partner',
+		'voorvoegsel_partner',
+		
+		'identiteitsdocument_id',
+		'create_time',
+		'create_user_id',
+		'update_time',
+		'update_user_id',
+		*/
+		array(
+			'class'=>'CButtonColumn',
+		),
+	),
+)); ?>

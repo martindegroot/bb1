@@ -1,0 +1,57 @@
+<?php
+/* @var $this PersoonController */
+/* @var $model Persoon */
+/* @var $form CActiveForm */
+
+$this->breadcrumbs=array(
+    'Klanten'=>array('index'),
+    'Invoeren klantgegevens (stap 1 van 3)',
+);
+
+$this->menu=array(
+    array('label'=>'Lijst van personen', 'url'=>array('index')),
+    array('label'=>'Beheren personen', 'url'=>array('admin')),
+);
+?>
+<h1>Invoeren van klantgegevens, stap 1 persoonsgegevens</h1>
+<div class="form">
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+    'id'=>'user-form',
+    'enableAjaxValidation'=>false,
+  'stateful'=>true,
+)); ?>
+    <p class="note">Gegevens met een <span class="required">*</span> moeten ingevuld worden.</p>
+
+    <?php echo $form->errorSummary($model); ?> 
+
+    <div class="row">
+        <?php echo $form->labelEx($model,'achternaam'); ?>
+        <?php echo $form->textField($model,'achternaam',array('size'=>45,'maxlength'=>45)); ?>
+        <?php echo $form->error($model,'achternaam'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->labelEx($model,'voorvoegsel'); ?>
+        <?php echo $form->textField($model,'voorvoegsel',array('size'=>15,'maxlength'=>15)); ?>
+        <?php echo $form->error($model,'voorvoegsel'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->labelEx($model,'voorletters'); ?>
+        <?php echo $form->textField($model,'voorletters',array('size'=>15,'maxlength'=>15)); ?>
+        <?php echo $form->error($model,'voorletters'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->labelEx($model,'titel'); ?>
+        <?php echo $form->dropDownList($model,'titel', $model->getTitelOptions()); ?>
+        <?php echo $form->error($model,'titel'); ?>
+    </div>
+        
+    <div class="row buttons">
+        <?php echo CHtml::submitButton('Verder', array('name'=>'page3')); ?>
+    </div>
+<?php $this->endWidget(); ?>
+
+</div><!-- form -->

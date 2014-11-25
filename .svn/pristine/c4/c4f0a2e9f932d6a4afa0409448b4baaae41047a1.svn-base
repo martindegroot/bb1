@@ -1,0 +1,26 @@
+<?php
+/* @var $this IdentiteitsdocumentController */
+/* @var $model Identiteitsdocument */
+
+
+$this->breadcrumbs=array(
+//	'Identiteitsdocumenten'=>array('index'),
+//	'Identiteitsdocument met ID=' . $model->id =>array('view','id'=>$model->id),
+//	'Wijzigen',
+);
+
+$this->menu=array(
+//	array('label'=>'Lijst van identiteitsdocumenten', 'url'=>array('index')),
+//	array('label'=>'Invoeren identiteitsdocument', 'url'=>array('create')),
+//	array('label'=>'Bekijken identiteitsdocument', 'url'=>array('view', 'id'=>$model->id)),
+//	array('label'=>'Beheren identiteitsdocumenten', 'url'=>array('admin')),
+);
+
+$persoon = Persoon::model()->findByPk($persoon_id);
+$klant = Klant::model()->findByPk($klant_id);
+
+?>
+
+<h3>Wijzigen identiteitsdocument van <?php echo $persoon->naamVoluitTitel . ' (klantnr=' . $klant->klantnr . ')'; ?></h3>
+
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -1,0 +1,95 @@
+<?php
+/* @var $this PersoonController */
+/* @var $model Persoon */
+/* @var $form CActiveForm */
+?>
+
+<div class="wide form">
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'action'=>Yii::app()->createUrl($this->route),
+	'method'=>'get',
+)); ?>
+
+	<div class="row">
+		<?php echo $form->label($model,'id'); ?>
+		<?php echo $form->textField($model,'id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'achternaam'); ?>
+		<?php echo $form->textField($model,'achternaam',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'voorvoegsel'); ?>
+		<?php echo $form->textField($model,'voorvoegsel',array('size'=>15,'maxlength'=>15)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'voorletters'); ?>
+		<?php echo $form->textField($model,'voorletters',array('size'=>15,'maxlength'=>15)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'naamgebruik'); ?>
+		<?php echo $form->textField($model,'naamgebruik',array('size'=>2,'maxlength'=>2)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'bsn'); ?>
+		<?php echo $form->textField($model,'bsn'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'geboortedatum'); ?>
+		<?php echo $form->textField($model,'geboortedatum'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'achternaam_partner'); ?>
+		<?php echo $form->textField($model,'achternaam_partner',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'voorvoegsel_partner'); ?>
+		<?php echo $form->textField($model,'voorvoegsel_partner',array('size'=>15,'maxlength'=>15)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'titel'); ?>
+		<?php echo $form->textField($model,'titel',array('size'=>30,'maxlength'=>30)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'identiteitsdocument_id'); ?>
+		<?php echo $form->textField($model,'identiteitsdocument_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'create_time'); ?>
+		<?php echo $form->textField($model,'create_time'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'create_user_id'); ?>
+		<?php echo $form->textField($model,'create_user_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'update_time'); ?>
+		<?php echo $form->textField($model,'update_time'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'update_user_id'); ?>
+		<?php echo $form->textField($model,'update_user_id'); ?>
+	</div>
+
+	<div class="row buttons">
+		<?php echo CHtml::submitButton('Zoeken'); ?>
+	</div>
+
+<?php $this->endWidget(); ?>
+
+</div><!-- search-form -->
